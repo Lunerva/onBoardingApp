@@ -32,7 +32,5 @@ fun ButtonFinish(currentPage: Int, navController: NavController, store:StoreBoar
                     color = Color.Gray)
             }
         }
-
-
     }
 }

@@ -16,10 +16,10 @@ import com.example.boardingapp.views.SplashScreen
 fun NavManager(){
     val context= LocalContext.current
     val dataStore= StoreBoarding(context)
-    val store=dataStore.getStoreBoarding.collectAsState(initial = true)
+    val store=dataStore.getStoreBoarding.collectAsState(initial = false)
 
     val navController= rememberNavController()
-    NavHost(navController = navController,startDestination = "Splash"){// startDestination = if(store.value==true)"home" else "onBoarding"){// startDestination = "Splash"){
+    NavHost(navController = navController,startDestination = if(store.value==true)"home" else "onBoarding"){// startDestination = "Splash"){
         composable("onBoarding"){
             MainViewBoarding(navController,dataStore)
         }

@@ -16,7 +16,7 @@ import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.rememberPagerState
 
 
-@OptIn(ExperimentalPagerApi::class,ExperimentalFoundationApi::class)
+@OptIn(ExperimentalPagerApi::class )
 @Composable
 fun MainViewBoarding(navController: NavController,store:StoreBoarding){
     val items=ArrayList<PageData>()

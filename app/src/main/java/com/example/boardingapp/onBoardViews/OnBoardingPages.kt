@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -26,13 +27,14 @@ import com.google.accompanist.pager.PagerState
 fun OnBoardPages(
     item:List<PageData>,
     pagerState:PagerState,
-    modifier: Modifier=Modifier,
+    modifier: Modifier =Modifier,
     navController: NavController,
     store:StoreBoarding
 ){
     Box (modifier = Modifier){
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            HorizontalPager(state = pagerState) { page ->
+            HorizontalPager(state = pagerState) {
+                page ->
                 Column(
                     modifier = Modifier
                         .padding(60.dp)
@@ -48,6 +50,14 @@ fun OnBoardPages(
                     )
 
                     Text(
+                        text = item[page].title,
+                        modifier = Modifier.padding(top = 50.dp),
+                        color = Color.Black,
+                        style = MaterialTheme.typography.displayMedium,
+                        fontWeight = FontWeight.Bold
+                    )
+
+                    Text(
                         text = item[page].description,
                         color = Color.Black,
                         textAlign = TextAlign.Center,
@@ -59,7 +69,7 @@ fun OnBoardPages(
             PagerIndicator(item.size, pagerState.currentPage)
         }
         Box (modifier = Modifier.align(Alignment.BottomCenter)){
-            ButtonFinish(currentPage = pagerState.currentPage,navController,store)
+            ButtonFinish(pagerState.currentPage,navController,store)
         }
     }
 }
